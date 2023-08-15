@@ -21,7 +21,7 @@ services:
     volumes:
       - "seid_data:/root/.seid"
     command: >
-      /usr/bin/seid start --help
+      /usr/bin/seid start
       --home /root/.seid
     networks:
       - docknode-sei
