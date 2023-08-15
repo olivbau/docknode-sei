@@ -51,8 +51,8 @@ ufw enable
 4. Run
 
 ```bash
-docker compose pull
+docker compose pull --ignore-pull-failures
 docker compose up -d
-docker logs -f docknode-sei-node-1 --since 5m
+docker logs -f docknode-sei-seid-1 --since 5m
 docker compose down
 ```
