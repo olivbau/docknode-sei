@@ -44,7 +44,7 @@ nano .env
 
 ```bash
 ufw allow ssh
-ufw deny 26656
+ufw deny 1317
 ufw enable
 ```
 
