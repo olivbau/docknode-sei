@@ -23,6 +23,8 @@ services:
     command: >
       /usr/bin/seid start
       --home /root/.seid
+      --chain-id pacific-1
+      --moniker sonarwatch
     networks:
       - docknode-sei
     depends_on:
