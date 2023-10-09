@@ -23,9 +23,7 @@ services:
       - seid_wasm:/root/.seid/wasm
       - ./seid:/root/.seid/config:rw
     command: >
-      /usr/bin/seid start
-      --mode full
-      --moniker dockenode-sei
+      /usr/bin/seid init docknode-sei
       --home /root/.seid
       --chain-id pacific-1
     networks:
