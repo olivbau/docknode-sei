@@ -6,25 +6,27 @@ networks:
 
 volumes:
   seid_data: {}
+  seid_wasm: {}
   caddy_data: {}
   caddy_config: {}
 
 services:
   seid:
-    image: "seid:3.0.8"
+    image: "sei-chain/seid:latest"
     restart: unless-stopped
-    expose:
-      - 1317
-      - 26657
     ports:
       - "26656:26656"
+      - "26657:26657"
+      - "1317:1317"
     volumes:
-      - "seid_data:/root/.seid"
+      - seid_data:/root/.seid/data
+      - seid_wasm:/root/.seid/wasm
+      - ./seid:/root/.seid/config
     command: >
-      /usr/bin/seid start
+      /usr/bin/seid help
       --home /root/.seid
       --chain-id pacific-1
-      --moniker sonarwatch
+      --moniker docknode-sei
     networks:
       - docknode-sei
     depends_on:

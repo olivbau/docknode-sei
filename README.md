@@ -10,24 +10,34 @@
 0. VPS config (optional)
 
 ```bash
-apt update
-apt upgrade
-apt install git
+# Install deps
+apt update && apt upgrade -y && apt install -y git cmake gcc make jq snapd
 
-# Or all in one command
-apt update && apt upgrade -y && apt install -y git
+# Install docker
+# https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
-# install docker https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+# Install go
+sudo snap install go --classic
 ```
 
-1. Clone the repository and
+1. Build image
+
+```bash
+git clone https://github.com/sei-protocol/sei-chain.git
+cd sei-chain
+git checkout v3.2.1
+docker build --tag sei-chain/seid .
+cd ..
+```
+
+2. Clone the repository and
 
 ```bash
 git clone https://github.com/olivbau/docknode-sei.git
 cd docknode-sei
 ```
 
-2. Configure environement variables
+3. Configure environement variables
 
 ```bash
 cp .env.example .env
@@ -40,7 +50,7 @@ docker run --rm caddy:2-alpine caddy hash-password --plaintext 'password'
 nano .env
 ```
 
-3. Setup UFW
+4. Setup UFW
 
 ```bash
 ufw allow ssh
@@ -48,7 +58,7 @@ ufw deny 1317
 ufw enable
 ```
 
-4. Run
+5. Run
 
 ```bash
 docker compose pull --ignore-pull-failures
