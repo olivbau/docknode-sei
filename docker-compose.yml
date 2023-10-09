@@ -13,7 +13,7 @@ volumes:
 services:
   seid:
     image: "sei-chain/seid:latest"
-    restart: unless-stopped
+    restart: "no"
     ports:
       - "26656:26656"
       - "26657:26657"
