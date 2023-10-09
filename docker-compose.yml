@@ -13,7 +13,7 @@ volumes:
 services:
   seid:
     image: "sei-chain/seid:latest"
-    restart: "no"
+    restart: unless-stopped
     ports:
       - "26656:26656"
       - "26657:26657"
@@ -24,7 +24,8 @@ services:
       - ./seid:/root/.seid/config:rw
     command: >
       /usr/bin/seid start
-      --help
+      --mode full
+      --moniker dockenode-sei
       --home /root/.seid
       --chain-id pacific-1
     networks:
