@@ -21,9 +21,10 @@ services:
     volumes:
       - seid_data:/root/.seid/data
       - seid_wasm:/root/.seid/wasm
-      - ./seid:/root/.seid/config
+      - ./seid:/root/.seid/config:rw
     command: >
-      /usr/bin/seid help
+      /usr/bin/seid start
+      --help
       --home /root/.seid
       --chain-id pacific-1
       --moniker docknode-sei
