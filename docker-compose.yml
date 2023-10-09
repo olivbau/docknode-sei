@@ -23,10 +23,9 @@ services:
       - seid_wasm:/root/.seid/wasm
       - ./seid:/root/.seid/config:rw
     command: >
-      /usr/bin/seid init
+      /usr/bin/seid init docknode-sei
       --home /root/.seid
       --chain-id pacific-1
-      --moniker docknode-sei
     networks:
       - docknode-sei
     depends_on:
